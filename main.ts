@@ -88,6 +88,7 @@ game.onUpdateInterval(500, function() {
     enemyShip.setPosition(180, Math.randomRange(0,120))
 })
 
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Player, function(sprite: Sprite, otherSprite: Sprite) {
-    
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function(sprite: Sprite, otherSprite: Sprite) {
+    otherSprite.destroy()
+    sprite.destroy(effects.fire,100)
 })
