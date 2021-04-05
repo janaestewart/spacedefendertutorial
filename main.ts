@@ -85,4 +85,9 @@ game.onUpdateInterval(500, function() {
      . . . . . . . . . . . a a a . .
  `, SpriteKind.Enemy)
     enemyShip.setVelocity(-100, 0)
+    enemyShip.setPosition(180, Math.randomRange(0,120))
+})
+
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Player, function(sprite: Sprite, otherSprite: Sprite) {
+    
 })
