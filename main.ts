@@ -2,6 +2,7 @@
  let enemyShip: Sprite = null
  let projectile: Sprite = null
  
+
  spaceShip = sprites.create(img`
      . . . . . . . . . . . . . . . .
      . . . . . . . . . . . . . . . .
@@ -39,7 +40,9 @@
 //      . . . . . . . . . . a a a a . .
 //      . . . . . . . . . . . a a a . .
 //  `, SpriteKind.Enemy)
- 
+
+info.setLife(3)
+
 controller.moveSprite(spaceShip)
 spaceShip.setFlag(SpriteFlag.StayInScreen, true) //so the spaceShip wont fly off screen
 
@@ -91,4 +94,10 @@ game.onUpdateInterval(500, function() {
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function(sprite: Sprite, otherSprite: Sprite) {
     otherSprite.destroy()
     sprite.destroy(effects.fire,100)
+    info.changeScoreBy(1)
+})
+
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function(sprite: Sprite, otherSprite: Sprite) {
+    otherSprite.destroy()
+    info.changeLifeBy(-1)
 })
